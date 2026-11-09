@@ -5,37 +5,83 @@
 */
 
 function askEightball() {
-  // Get input values from the form
-  let userName = document.getElementById("nameInput").value 
-  let userQuestion = document.getElementById("questionInput").value
-  console.log(userName, userQuestion);
+  const nameInput = document.getElementById("nameInput");
+  const questionInput = document.getElementById("questionInput");
+  const userName = nameInput ? nameInput.value.trim() : "";
+  const userQuestion = questionInput ? questionInput.value.trim() : "";
 
-//show the question on site
-    document.getElementById('questionOut').textContent = "You asked: " + userQuestion;
+  const greetingElement = document.getElementById("greeting");
+  const questionOutElement = document.getElementById("questionOut");
+  const answerElement = document.getElementById("answer");
+  const answerTypeElement = document.getElementById("answerType");
 
-  // Greet the user
-  let greeting 
+  const greeting = userName === "" ? "Hello Mystery Person!" : `Hello, ${userName}!`;
+  greetingElement.textContent = greeting;
 
-  if (userName === "") {
-    greeting = "Hello Mystery Person!";
-  } else {
-    greeting = `Hello, ${userName}!`;
+  if (userQuestion === "") {
+    questionOutElement.textContent = "";
+    answerElement.textContent = "The 8Ball needs a question! Dummy...";
+    answerTypeElement.innerHTML = "";
+    return;
   }
-  document.getElementById('greeting').textContent = greeting;
 
+  questionOutElement.textContent = `You asked: ${userQuestion}`;
 
-  //check the question 
-if (userQuestion === '') {
-  document.getElementById('questionOut').textContent = '';
-  document.getElementById('answer').textContent = "The 8Ball needs a question! Dummy...";
-  document.getElementById('answerType').innerHTML = '';
-  return;
+  const randomNumber = Math.floor(Math.random() * 8);
+  let eightball = "";
+  let answerClass = "";
+  let answerLabel = "";
+
+  switch (randomNumber) {
+    case 0:
+      eightball = "It is certain";
+      answerClass = "yes";
+      answerLabel = "Yes";
+      break;
+    case 1:
+      eightball = "It is decidedly so";
+      answerClass = "yes";
+      answerLabel = "Yes";
+      break;
+    case 2:
+      eightball = "Reply hazy, try again";
+      answerClass = "maybe";
+      answerLabel = "Maybe";
+      break;
+    case 3:
+      eightball = "Cannot predict now";
+      answerClass = "maybe";
+      answerLabel = "Maybe";
+      break;
+    case 4:
+      eightball = "Do not count on it";
+      answerClass = "no";
+      answerLabel = "No";
+      break;
+    case 5:
+      eightball = "My sources say no";
+      answerClass = "no";
+      answerLabel = "No";
+      break;
+    case 6:
+      eightball = "Outlook not so good";
+      answerClass = "no";
+      answerLabel = "No";
+      break;
+    case 7:
+      eightball = "Signs point to yes";
+      answerClass = "yes";
+      answerLabel = "Yes";
+      break;
+    default:
+      eightball = "Ask again later";
+      answerClass = "maybe";
+      answerLabel = "Maybe";
+  }
+
+  answerElement.textContent = eightball;
+  answerTypeElement.innerHTML = `<span class="${answerClass}">${answerLabel}</span>`;
+
+  console.log(`The Magic 8 Ball says, "${eightball}".`);
 }
 
-//get random number for the answer
-
-
-//choose answer from array of answers
-
-
-}
