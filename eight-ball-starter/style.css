@@ -18,7 +18,7 @@
   --amber: #ffd166;
   --green: #5ef2b8;
   --text: #eaf6ff;
-  --muted: #a9c0d5;
+  --muted: #c0d5e6;
   --shadow: 0 0 25px rgba(109, 231, 255, 0.22);
   --font: "Rajdhani", Arial, sans-serif;
   --font-display: "Orbitron", "Rajdhani", sans-serif;
@@ -163,6 +163,7 @@ main.container,
   background: linear-gradient(180deg, rgba(17, 25, 40, 0.88), rgba(14, 20, 33, 0.88));
   border: 1px solid var(--card-border);
   border-radius: 20px;
+  color: var(--text);
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
   animation: rise-in 0.65s both;
@@ -218,6 +219,7 @@ main.container,
   background: linear-gradient(180deg, rgba(17,25,40,0.82), rgba(11,16,25,0.9));
   border: 1px solid rgba(107, 231, 255, 0.25);
   border-radius: 24px;
+  color: var(--text);
   box-shadow: var(--shadow), inset 0 0 0 1px rgba(255,255,255,0.02);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -247,14 +249,24 @@ main.container,
 }
 
 .form-control::placeholder {
-  color: rgba(169,192,213,0.75);
+  color: #b6cadb;
+  opacity: 1;
 }
 
 .form-control:focus {
   background: rgba(12, 19, 31, 0.9);
   border-color: var(--cyan);
+  color: var(--text);
   box-shadow: 0 0 0 0.25rem rgba(107, 231, 255, 0.15);
   transform: translateY(-1px);
+}
+
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  box-shadow: 0 0 0 1000px #0c131f inset;
+  transition: background-color 9999s ease-out;
 }
 
 .btn-ask {
